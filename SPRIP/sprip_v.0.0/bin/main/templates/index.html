@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">    
+     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+    <script src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"></script>
+     <script type = "text/javascript" src = "./js/mainpage.js" th:src="@{/js/mainpage.js}"></script>
+</head>
+<body>
+<header id="header" th:replace="~{/header :: header}"> </header> 
+<main id="home_main">
+    <div id="home_image">
+        <div id="home_contents">
+            <h1>It’s A Big World<br>Out There,Go Explore</h1>
+            <h3>SPRIP과 함께 세상을 탐험하세요</h3>
+            <div id="home_plane">
+                <div id="home_plane_input">
+                    <label>출발지<br>
+                        <select>
+                            <option>--옵션 추가--</option>
+                        </select>
+                    </label>
+                    <label>도착지<br>
+                        <select>
+                            <option>--옵션 추가--</option>
+                        </select>
+                    </label>
+                    <label>가는편<br>
+                        <select>
+                            <option>--옵션 추가--</option>
+                        </select>
+                    </label>
+                    <label>오는편<br>
+                        <select>
+                            <option>--옵션 추가--</option>
+                        </select>
+                    </label>
+                    <label>인원<br>
+                        <select>
+                            <option>--옵션 추가--</option>
+                        </select>
+                    </label>
+                    <label>좌석 등급<br>
+                        <select>
+                            <option>--옵션 추가--</option>
+                        </select>
+                    </label>
+                </div>
+                <div id="home_plane_button" class="color_button">검색하기</div>
+            </div>
+        </div>
+    </div>
+    <div id="home_list">
+        <div id="home_list_title">인기 여행지</div>
+        <div id="home_list_label">
+            <span>국내</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>해외</span>
+        </div> 
+        <!-- Carousel 시작 -->
+        <div class="home_list_container">
+            <div class="embla__container">
+              <div class="embla__slide">
+                <img src="/img/bali1.JPG" alt="" class="img-fluid"></div>
+              <div class="embla__slide">
+                <img src="/img/mongolia.jpg" alt="" class="img-fluid"></div>
+              <div class="embla__slide">
+                <img src="/img/japan1.jpg" alt="" class="img-fluid"></div>
+            <div class="embla__slide">
+                <img src="/img/osaka.JPG" alt="" class="img-fluid"></div>
+            <div class="embla__slide">
+                <img src="/img/spain1.JPG" alt="" class="img-fluid"></div>
+            <div class="embla__slide">
+                <img src="/img/taiwan1.JPG" alt="" class="img-fluid"></div>
+            <div class="embla__slide">
+                <img src="/img/paris.JPG" alt="" class="img-fluid"></div>
+            </div> 
+        </div>
+        <!-- carousel 끝 -->
+    </div>
+    <!-- sidebar 시작-->
+     <div class="quickmenu">
+        <ul>
+          <li><a href="/reservation/plane">항공권예약</a></li>
+          <li><a href="/reservation/hotel">호텔예약</a></li>
+          <li><a href="/reservation/travelspot/1">여행지 검색</a></li>
+          <li><a href="/qna/new">1:1 문의</a></li>
+          <li><a href="/mypage">마이페이지</a></li>
+        </ul>
+      </div>
+      <!-- sidebar 종료-->
+</main>
+<footer>
+</footer>
+</body>
+</html>

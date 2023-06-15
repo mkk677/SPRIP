@@ -1,0 +1,36 @@
+#port 수정
+server:
+  port: 9090
+
+#DB Connection
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/XE
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: sprip
+    password: 1234
+    
+#JPA
+  jpa:
+    hibernate:
+     ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle10gDialect
+        format_sql: true
+        show_sql: true
+  
+  thymeleaf:
+    cache: false
+    
+#logging level :
+  org:
+    hibernate:
+      SQL: debug
+      type: trace
+      
+#결제 API 키, 시크릿 키
+iamport:
+  api:
+    key: "3130886717734530"
+    secret: "rVnn8cuI8Z8AH90vW5X9KWBZpivPI6sis3DjtQpGRAFpxHA4mNgR1f0RmBiNxZwnWgI5auWuWLCYIhx3"

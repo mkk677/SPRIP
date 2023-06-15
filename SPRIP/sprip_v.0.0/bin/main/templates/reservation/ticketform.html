@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ 
+<body>
+    <div id="plane_title" th:fragment="ticketform">
+        <h1>항공권</h1> 
+        <div>
+            <form id="plane_form" method="post" th:action="@{/plane/findTicket}" th:object=${ticketFormDTO}>
+                <div class="plane_form_inputblock" style="width:205px;">
+	                <i class="bi bi-airplane-fill"></i>
+	                <select id="roundornot" class="plane_form_select" th:field="*{roundornot}">
+						<option th:each="RoundOrNot : ${T(com.codingbox.sprip.reservation.plane.RoundOrNot).values()}"
+							th:value="${RoundOrNot}" th:text="${RoundOrNot.getName()}"></option>
+	                </select>
+                </div>
+                <div class="plane_form_inputblock" >
+                	<i class="bi bi-person-circle"></i>
+	                <input class="plane_form_select" th:field="*{reservenum}" 
+	                	style="border:none; width:80px;" type='number' min='1' max='10' step='1' th:placeholder="${'인원 선택'}">
+	                <span class="plane_form_error upper_bar" th:if="${#fields.hasErrors('reservenum')}" th:errors="*{reservenum}" ></span> 
+                </div>
+                <div class="plane_form_inputblock" >
+	                <i class="bi bi-award-fill"></i>
+	                <select class="plane_form_select" th:field="*{seatclass}">
+	                    <option value="">- 좌석 등급 -</option>
+						<option th:each="SeatClass : ${T(com.codingbox.sprip.reservation.plane.SeatClass).values()}"
+							th:value="${SeatClass}" th:text="${SeatClass.getName()}"></option>
+	                </select>
+	                <span class="plane_form_error upper_bar" th:if="${#fields.hasErrors('seatclass')}" th:errors="*{seatclass}" ></span>
+                </div>
+                <br><br>
+                <div class="plane_form_inputblock">
+	                <span class="plane_form_error" th:if="${#fields.hasErrors('startpoint')}" th:errors="*{startpoint}" ></span>
+	                <input class="ticket_spot" list="spotlist" placeholder="출발지" th:field="*{startpoint}">
+                </div>
+                <img src="/img/logo.png">
+                <div class="plane_form_inputblock">
+	                <span class="plane_form_error" th:if="${#fields.hasErrors('finishpoint')}" th:errors="*{finishpoint}" ></span>
+	                <input class="ticket_spot" list="spotlist" placeholder="도착지" th:id="finishpoint" th:name="finishpoint"
+	                	th:value="${param?.finishpoint}" >
+                </div>
+                <datalist id="spotlist">
+                    <option th:each="travelspot : ${travelspots}" th:value="${travelspot.city}"></option> 
+                </datalist> 
+                <div class="plane_form_inputblock">
+	                <span class="plane_form_error" th:if="${#fields.hasErrors('startdate')}" th:errors="*{startdate}" ></span>
+	                <input type="text" class="plane_date" placeholder="가는 날짜" onblur="(this.type='text')" th:field="*{startdate}">
+                </div>
+                &nbsp;-&nbsp;    
+                <div class="plane_form_inputblock">
+                	<span class="plane_form_error" th:if="${#fields.hasErrors('finishdate')}" th:errors="*{finishdate}" ></span>
+	                <input type="text" class="plane_date" placeholder="오는 날짜" onblur="(this.type='text')" th:field="*{finishdate}">
+                </div>
+                <input type="hidden" th:field="*{airid}">
+                <input type="hidden" th:field="*{depart}">
+                <input type="hidden" th:field="*{duration}">
+                <input type="hidden" th:field="*{arrive}">
+                <input type="hidden" th:field="*{dayplus}"> 
+                <button type="submit" class="color_button">검색</button>
+            </form>
+     	 </div>
+    </div>
+</body> 
+</html>

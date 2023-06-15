@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="./style.css" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://kit.fontawesome.com/3744ba3e08.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header id="header" th:replace="~{/header :: header}"> </header> 
+<main class="page_background">
+    <div id="hotel_title">
+        <h1>호텔</h1> 
+    </div>
+    <div id="hotel_search">
+        <div id="hotel_search_bar">
+            <h3>호텔 검색</h3>
+            <div id="hotel_select">
+                <i class="bi bi-person-circle"></i>
+                <input type='number' min='1' max='6' step='1' id="reservenum_" placeholder="인원" >
+                <input type="text" class="hotel_date" id="startdate_" placeholder="체크인" onblur="(this.type='text')">
+                &nbsp;-&nbsp;    
+                <input type="text" class="hotel_date" id="finishdate_" placeholder="체크아웃" onblur="(this.type='text')">
+            </div>
+        </div>
+        <div id="map">지도 영역 </div>
+        <div>
+            <input id="pac-input" placeholder="목적지 주변 숙소를 찾아보세요." type="text">
+        </div>
+        <button id="placeSearch" class="color_button">현재 위치에서<br>다시 검색하기</button>
+        <div id="hotel_card">
+        </div>
+    </div>
+    <form name="hotel_form" id="hotel_form" method="post" th:action="@{/reservation/hotel/hotelReserve}" th:object="${HotelDTO}" >
+    	<input type="hidden" th:field="*{addr}" >
+    	<input type="hidden" th:field="*{hotelname}" >
+    	<input type="hidden" th:field="*{hotelprice}" >
+    	<input type="hidden" th:field="*{hotelphone}" >
+    	<input type="hidden" th:field="*{hotelplaceid}" >
+    	<input type="hidden" th:field="*{reservenum}" >
+    	<input type="hidden" th:field="*{reservedate}" >
+    	<input type="hidden" th:field="*{startdate}" >
+    	<input type="hidden" th:field="*{finishdate}" >
+    	<input type="hidden" th:field="*{paymentprice}" >
+    </form>
+</main>
+<footer>
+</footer>
+</body>
+<script defer 
+    src="./js/map.js" th:src="@{/js/map.js}">
+</script>
+<script defer 
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdwscoiuk19RMJcrWA9S2HxFIBchnHL-Q&libraries=places&callback=initMap">
+</script>
+</html>
